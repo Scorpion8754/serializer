@@ -16,7 +16,7 @@ namespace WindowsFormsApp1
 
     public partial class Form1 : Form
     {
-        public static string dir = SelectFile();
+        public string dir = SelectFile();
         
         
         public Form1()
@@ -73,17 +73,20 @@ namespace WindowsFormsApp1
 
         private static string SelectFile()
         {
-            Console.WriteLine(dir);
-
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                return (ofd.ToString());
+                return (ofd.FileName);
                 
             else
             {
                 return "null";
             }
             
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            label6.Text = dir;
         }
     }
 }
