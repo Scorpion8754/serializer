@@ -30,6 +30,13 @@ namespace WindowsFormsApp1
 
 
         public vec_t vdata;
-
+        public char cdata;
+        public char flagdata;
+        public int MID;
+        public int OptionBits;
+        public int OptionVals;
+        public char tag;
+        public int Behavior;
+        public uint ID;
     }
 }
