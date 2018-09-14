@@ -6,20 +6,30 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
+    public struct vec_t {
+        public float x;
+        public float y;
+        public float z;
+    }
     [Serializable]
-    public class Data
+    public struct Data
     {
-        private string Name;
-        public string name
+        private float Fdata;
+        public float fdata
         {
-            get { return Name; }
-            set { Name = value; }
+            get { return Fdata; }
+            set { Fdata = value; }
         }
-        private string Phone;
-        public string phone
+    
+        private int Idata;
+        public int idata
         {
-            get { return Phone; }
-            set { Phone = value; }
+            get { return Idata; }
+            set { Idata = value; }
         }
+
+
+        public vec_t vdata;
+
     }
 }
