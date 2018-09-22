@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.fdata = new System.Windows.Forms.TextBox();
-            this.idata = new System.Windows.Forms.TextBox();
+            this.fdataz = new System.Windows.Forms.TextBox();
+            this.idataz = new System.Windows.Forms.TextBox();
             this.fdatalbl = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -40,40 +40,40 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.cdata = new System.Windows.Forms.TextBox();
-            this.vecx = new System.Windows.Forms.TextBox();
+            this.cdataz = new System.Windows.Forms.TextBox();
+            this.vecxz = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.MID = new System.Windows.Forms.TextBox();
-            this.flagdata = new System.Windows.Forms.TextBox();
+            this.MIDz = new System.Windows.Forms.TextBox();
+            this.flagdataz = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.OptionVals = new System.Windows.Forms.TextBox();
-            this.OBits = new System.Windows.Forms.TextBox();
+            this.OptionValz = new System.Windows.Forms.TextBox();
+            this.OBitz = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.Behavior = new System.Windows.Forms.TextBox();
-            this.tag = new System.Windows.Forms.TextBox();
+            this.Behaviorz = new System.Windows.Forms.TextBox();
+            this.tagz = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.ID = new System.Windows.Forms.TextBox();
-            this.vecz = new System.Windows.Forms.TextBox();
-            this.vecy = new System.Windows.Forms.TextBox();
+            this.IDz = new System.Windows.Forms.TextBox();
+            this.veczz = new System.Windows.Forms.TextBox();
+            this.vecyz = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
-            // fdata
+            // fdataz
             // 
-            this.fdata.Location = new System.Drawing.Point(135, 6);
-            this.fdata.Name = "fdata";
-            this.fdata.Size = new System.Drawing.Size(150, 20);
-            this.fdata.TabIndex = 0;
+            this.fdataz.Location = new System.Drawing.Point(135, 6);
+            this.fdataz.Name = "fdataz";
+            this.fdataz.Size = new System.Drawing.Size(150, 20);
+            this.fdataz.TabIndex = 0;
             // 
-            // idata
+            // idataz
             // 
-            this.idata.Location = new System.Drawing.Point(135, 39);
-            this.idata.Name = "idata";
-            this.idata.Size = new System.Drawing.Size(150, 20);
-            this.idata.TabIndex = 1;
+            this.idataz.Location = new System.Drawing.Point(135, 39);
+            this.idataz.Name = "idataz";
+            this.idataz.Size = new System.Drawing.Size(150, 20);
+            this.idataz.TabIndex = 1;
             // 
             // fdatalbl
             // 
@@ -165,19 +165,19 @@
             this.label5.TabIndex = 20;
             this.label5.Text = "f_vec";
             // 
-            // cdata
+            // cdataz
             // 
-            this.cdata.Location = new System.Drawing.Point(135, 105);
-            this.cdata.Name = "cdata";
-            this.cdata.Size = new System.Drawing.Size(150, 20);
-            this.cdata.TabIndex = 19;
+            this.cdataz.Location = new System.Drawing.Point(135, 105);
+            this.cdataz.Name = "cdataz";
+            this.cdataz.Size = new System.Drawing.Size(150, 20);
+            this.cdataz.TabIndex = 19;
             // 
-            // vecx
+            // vecxz
             // 
-            this.vecx.Location = new System.Drawing.Point(135, 72);
-            this.vecx.Name = "vecx";
-            this.vecx.Size = new System.Drawing.Size(50, 20);
-            this.vecx.TabIndex = 18;
+            this.vecxz.Location = new System.Drawing.Point(135, 72);
+            this.vecxz.Name = "vecxz";
+            this.vecxz.Size = new System.Drawing.Size(50, 20);
+            this.vecxz.TabIndex = 18;
             // 
             // label7
             // 
@@ -197,19 +197,19 @@
             this.label8.TabIndex = 24;
             this.label8.Text = "flagdata";
             // 
-            // MID
+            // MIDz
             // 
-            this.MID.Location = new System.Drawing.Point(135, 171);
-            this.MID.Name = "MID";
-            this.MID.Size = new System.Drawing.Size(150, 20);
-            this.MID.TabIndex = 23;
+            this.MIDz.Location = new System.Drawing.Point(135, 171);
+            this.MIDz.Name = "MIDz";
+            this.MIDz.Size = new System.Drawing.Size(150, 20);
+            this.MIDz.TabIndex = 23;
             // 
-            // flagdata
+            // flagdataz
             // 
-            this.flagdata.Location = new System.Drawing.Point(135, 138);
-            this.flagdata.Name = "flagdata";
-            this.flagdata.Size = new System.Drawing.Size(150, 20);
-            this.flagdata.TabIndex = 22;
+            this.flagdataz.Location = new System.Drawing.Point(135, 138);
+            this.flagdataz.Name = "flagdataz";
+            this.flagdataz.Size = new System.Drawing.Size(150, 20);
+            this.flagdataz.TabIndex = 22;
             // 
             // label9
             // 
@@ -229,19 +229,19 @@
             this.label10.TabIndex = 28;
             this.label10.Text = "OptionBits";
             // 
-            // OptionVals
+            // OptionValz
             // 
-            this.OptionVals.Location = new System.Drawing.Point(135, 237);
-            this.OptionVals.Name = "OptionVals";
-            this.OptionVals.Size = new System.Drawing.Size(150, 20);
-            this.OptionVals.TabIndex = 27;
+            this.OptionValz.Location = new System.Drawing.Point(135, 237);
+            this.OptionValz.Name = "OptionValz";
+            this.OptionValz.Size = new System.Drawing.Size(150, 20);
+            this.OptionValz.TabIndex = 27;
             // 
-            // OBits
+            // OBitz
             // 
-            this.OBits.Location = new System.Drawing.Point(135, 204);
-            this.OBits.Name = "OBits";
-            this.OBits.Size = new System.Drawing.Size(150, 20);
-            this.OBits.TabIndex = 26;
+            this.OBitz.Location = new System.Drawing.Point(135, 204);
+            this.OBitz.Name = "OBitz";
+            this.OBitz.Size = new System.Drawing.Size(150, 20);
+            this.OBitz.TabIndex = 26;
             // 
             // label11
             // 
@@ -261,19 +261,19 @@
             this.label12.TabIndex = 32;
             this.label12.Text = "tag";
             // 
-            // Behavior
+            // Behaviorz
             // 
-            this.Behavior.Location = new System.Drawing.Point(135, 303);
-            this.Behavior.Name = "Behavior";
-            this.Behavior.Size = new System.Drawing.Size(150, 20);
-            this.Behavior.TabIndex = 31;
+            this.Behaviorz.Location = new System.Drawing.Point(135, 303);
+            this.Behaviorz.Name = "Behaviorz";
+            this.Behaviorz.Size = new System.Drawing.Size(150, 20);
+            this.Behaviorz.TabIndex = 31;
             // 
-            // tag
+            // tagz
             // 
-            this.tag.Location = new System.Drawing.Point(135, 270);
-            this.tag.Name = "tag";
-            this.tag.Size = new System.Drawing.Size(150, 20);
-            this.tag.TabIndex = 30;
+            this.tagz.Location = new System.Drawing.Point(135, 270);
+            this.tagz.Name = "tagz";
+            this.tagz.Size = new System.Drawing.Size(150, 20);
+            this.tagz.TabIndex = 30;
             // 
             // label13
             // 
@@ -284,52 +284,52 @@
             this.label13.TabIndex = 35;
             this.label13.Text = "ID";
             // 
-            // ID
+            // IDz
             // 
-            this.ID.Location = new System.Drawing.Point(135, 336);
-            this.ID.Name = "ID";
-            this.ID.Size = new System.Drawing.Size(150, 20);
-            this.ID.TabIndex = 34;
+            this.IDz.Location = new System.Drawing.Point(135, 336);
+            this.IDz.Name = "IDz";
+            this.IDz.Size = new System.Drawing.Size(150, 20);
+            this.IDz.TabIndex = 34;
             // 
-            // vecz
+            // veczz
             // 
-            this.vecz.Location = new System.Drawing.Point(235, 72);
-            this.vecz.Name = "vecz";
-            this.vecz.Size = new System.Drawing.Size(50, 20);
-            this.vecz.TabIndex = 36;
+            this.veczz.Location = new System.Drawing.Point(235, 72);
+            this.veczz.Name = "veczz";
+            this.veczz.Size = new System.Drawing.Size(50, 20);
+            this.veczz.TabIndex = 36;
             // 
-            // vecy
+            // vecyz
             // 
-            this.vecy.Location = new System.Drawing.Point(185, 72);
-            this.vecy.Name = "vecy";
-            this.vecy.Size = new System.Drawing.Size(50, 20);
-            this.vecy.TabIndex = 37;
+            this.vecyz.Location = new System.Drawing.Point(185, 72);
+            this.vecyz.Name = "vecyz";
+            this.vecyz.Size = new System.Drawing.Size(50, 20);
+            this.vecyz.TabIndex = 37;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(319, 478);
-            this.Controls.Add(this.vecy);
-            this.Controls.Add(this.vecz);
+            this.Controls.Add(this.vecyz);
+            this.Controls.Add(this.veczz);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.ID);
+            this.Controls.Add(this.IDz);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.Behavior);
-            this.Controls.Add(this.tag);
+            this.Controls.Add(this.Behaviorz);
+            this.Controls.Add(this.tagz);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.OptionVals);
-            this.Controls.Add(this.OBits);
+            this.Controls.Add(this.OptionValz);
+            this.Controls.Add(this.OBitz);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.MID);
-            this.Controls.Add(this.flagdata);
+            this.Controls.Add(this.MIDz);
+            this.Controls.Add(this.flagdataz);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.cdata);
-            this.Controls.Add(this.vecx);
+            this.Controls.Add(this.cdataz);
+            this.Controls.Add(this.vecxz);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label3);
@@ -338,8 +338,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.fdatalbl);
-            this.Controls.Add(this.idata);
-            this.Controls.Add(this.fdata);
+            this.Controls.Add(this.idataz);
+            this.Controls.Add(this.fdataz);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -351,8 +351,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox fdata;
-        private System.Windows.Forms.TextBox idata;
+        private System.Windows.Forms.TextBox fdataz;
+        private System.Windows.Forms.TextBox idataz;
         private System.Windows.Forms.Label fdatalbl;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
@@ -363,24 +363,24 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox cdata;
-        private System.Windows.Forms.TextBox vecx;
+        private System.Windows.Forms.TextBox cdataz;
+        private System.Windows.Forms.TextBox vecxz;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox MID;
-        private System.Windows.Forms.TextBox flagdata;
+        private System.Windows.Forms.TextBox MIDz;
+        private System.Windows.Forms.TextBox flagdataz;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox OptionVals;
-        private System.Windows.Forms.TextBox OBits;
+        private System.Windows.Forms.TextBox OptionValz;
+        private System.Windows.Forms.TextBox OBitz;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox Behavior;
-        private System.Windows.Forms.TextBox tag;
+        private System.Windows.Forms.TextBox Behaviorz;
+        private System.Windows.Forms.TextBox tagz;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox ID;
-        private System.Windows.Forms.TextBox vecz;
-        private System.Windows.Forms.TextBox vecy;
+        private System.Windows.Forms.TextBox IDz;
+        private System.Windows.Forms.TextBox veczz;
+        private System.Windows.Forms.TextBox vecyz;
     }
 }
 

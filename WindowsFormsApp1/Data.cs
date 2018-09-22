@@ -14,21 +14,8 @@ namespace WindowsFormsApp1
     [Serializable]
     public struct Data
     {
-        private float Fdata;
-        public float fdata
-        {
-            get { return Fdata; }
-            set { Fdata = value; }
-        }
-    
-        private int Idata;
-        public int idata
-        {
-            get { return Idata; }
-            set { Idata = value; }
-        }
-
-
+        public float fdata;    
+        public int idata;
         public vec_t vdata;
         public char cdata;
         public char flagdata;

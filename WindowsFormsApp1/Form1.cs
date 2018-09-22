@@ -30,8 +30,8 @@ namespace WindowsFormsApp1
         {
             Data data = new Data
             {
-                fdata = float.Parse(fdata.Text),
-                idata = Int32.Parse(idata.Text)
+                fdata = float.Parse(fdataz.Text),
+                idata = Int32.Parse(idataz.Text)
             };
             itemz[index] = data;
             BinaryFormatter bf = new BinaryFormatter();
@@ -56,27 +56,41 @@ namespace WindowsFormsApp1
         private void button2_Click(object sender, EventArgs e)
         {
             index = Int32.Parse(numericUpDown1.Text);
-            BinaryFormatter bf = new BinaryFormatter();
             FileStream fsin = new FileStream(@dir, FileMode.Open, FileAccess.Read, FileShare.None);
+            BinaryReader br = new BinaryReader(fsin);
             try
             {
                 using (fsin)
                 {
-                    itemz = ((List<Data>)bf.Deserialize(fsin));
+                    br.BaseStream.Seek(index, SeekOrigin.Begin);
+                    float fdata = br.ReadSingle();
+                    int idata = br.ReadInt32();
+                    float vec_x = br.ReadSingle();
+                    float vec_y = br.ReadSingle();
+                    float vec_z = br.ReadSingle();
+                    char cdata = br.ReadChar();
+                    char flagdata = br.ReadChar();
+                    int MID = br.ReadInt32();
+                    int OptionBits = br.ReadInt32();
+                    int OptionVals = br.ReadInt32();
+                    char tag = br.ReadChar();
+                    int Behavior = br.ReadInt32();
+                    uint ID = br.ReadUInt32();
+                    br.Close();
                     //if(Int32.Parse(textBox3.Text) )
                     label6.Text = "Object Derserialized";
-                    fdata.Text = itemz[index].fdata.ToString();
-                    idata.Text = itemz[index].idata.ToString();
-                    vecx.Text = itemz[index].vdata.x.ToString();
-                    vecy.Text = itemz[index].vdata.y.ToString();
-                    vecz.Text = itemz[index].vdata.z.ToString();
-                    cdata.Text = itemz[index].cdata.ToString();
-                    MID.Text = itemz[index].MID.ToString();
-                    OBits.Text = itemz[index].OptionBits.ToString();
-                    OptionVals.Text = itemz[index].OptionVals.ToString();
-                    tag.Text = itemz[index].tag.ToString();
-                    Behavior.Text = itemz[index].Behavior.ToString();
-                    ID.Text = itemz[index].ID.ToString();
+                    fdataz.Text = fdata.ToString();
+                    idataz.Text = idata.ToString();
+                    vecxz.Text = vec_z.ToString();
+                    vecyz.Text = vec_y.ToString();
+                    veczz.Text = vec_z.ToString();
+                    cdataz.Text = cdata.ToString();
+                    MIDz.Text = MID.ToString();
+                    OBitz.Text = OptionBits.ToString();
+                    OptionValz.Text = OptionVals.ToString();
+                    tagz.Text = tag.ToString();
+                    Behaviorz.Text = Behavior.ToString();
+                    IDz.Text = ID.ToString();
                     numericUpDown1.Enabled = false;
                 }
             }
@@ -108,17 +122,17 @@ namespace WindowsFormsApp1
         {
             Data data = new Data
             {
-                fdata = float.Parse(idata.Text),
-                idata = Int32.Parse(fdata.Text),
-                vdata = new vec_t { x = float.Parse(vecx.Text), y = float.Parse(vecy.Text), z = float.Parse(vecz.Text) },
-                cdata = cdata.Text[0],
-                flagdata = flagdata.Text[0],
-                MID = Int32.Parse(MID.Text),
-                OptionBits = Int32.Parse(OBits.Text),
-                OptionVals = Int32.Parse(OptionVals.Text),
-                tag = tag.Text[0],
-                Behavior = Int32.Parse(Behavior.Text),
-                ID = UInt32.Parse(ID.Text)
+                fdata = float.Parse(idataz.Text),
+                idata = Int32.Parse(fdataz.Text),
+                vdata = new vec_t { x = float.Parse(vecxz.Text), y = float.Parse(vecyz.Text), z = float.Parse(veczz.Text) },
+                cdata = cdataz.Text[0],
+                flagdata = flagdataz.Text[0],
+                MID = Int32.Parse(MIDz.Text),
+                OptionBits = Int32.Parse(OBitz.Text),
+                OptionVals = Int32.Parse(OptionValz.Text),
+                tag = tagz.Text[0],
+                Behavior = Int32.Parse(Behaviorz.Text),
+                ID = UInt32.Parse(IDz.Text)
             };
             itemz.Add(data);
             BinaryFormatter bf = new BinaryFormatter();
