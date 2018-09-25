@@ -53,29 +53,117 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+
+            unsafe public struct GenCapsule
+            {            
+            fixed float fdata[4]; //4
+            fixed int idata[4]; //4
+            fixed float vdata[12]; //4x3
+            fixed byte cdata[128]; //4x32
+            byte flagdata; //1
+            int MID; // 1
+            int OptionBits; //1 
+            fixed int OptionVals[8]; //8
+            fixed byte tag[8]; //8
+            int Behavior; //1 
+            uint ID; //1
+            }
+
+
+        private void button2_Click(object sender, EventArgs e) //deserialize
         {
+            /*
+             * 
+             struct GenCapsule
+            {            
+            float fdata[4];
+            int idata[4];
+            vec_t vdata[4];
+            char cdata[4][32];
+            char flagdata;
+            int MID;
+            int OptionBits;
+            int OptionVals[8];
+            char tag[8];
+            int Behavior;
+            unsigned int ID;
+            };
+             */
+            int offset = System.Runtime.InteropServices.Marshal.SizeOf(typeof(GenCapsule)); //get size of struct
+
             index = Int32.Parse(numericUpDown1.Text);
+
+            int realindex = index * offset;
+
             FileStream fsin = new FileStream(@dir, FileMode.Open, FileAccess.Read, FileShare.None);
             BinaryReader br = new BinaryReader(fsin);
             try
             {
                 using (fsin)
                 {
-                    br.BaseStream.Seek(index, SeekOrigin.Begin);
+                    br.BaseStream.Seek(realindex, SeekOrigin.Begin);
+
+                    //float[4]
                     float fdata = br.ReadSingle();
+                     fdata = br.ReadSingle();
+                     fdata = br.ReadSingle();
+                     fdata = br.ReadSingle();
+
+                    //int[4]
                     int idata = br.ReadInt32();
+                    idata = br.ReadInt32();
+                    idata = br.ReadInt32();
+                    idata = br.ReadInt32();
+
+                    //vec_t[4]
                     float vec_x = br.ReadSingle();
                     float vec_y = br.ReadSingle();
                     float vec_z = br.ReadSingle();
-                    char cdata = br.ReadChar();
-                    char flagdata = br.ReadChar();
+                     vec_x = br.ReadSingle();
+                     vec_y = br.ReadSingle();
+                     vec_z = br.ReadSingle();
+                     vec_x = br.ReadSingle();
+                     vec_y = br.ReadSingle();
+                     vec_z = br.ReadSingle();
+                     vec_x = br.ReadSingle();
+                     vec_y = br.ReadSingle();
+                     vec_z = br.ReadSingle();
+
+                    //cdata[4][32]
+                     char[] cdata = new char[128];
+                     for (int i = 0; i < 128; i++) //4*32 = 128
+                         cdata[i] = Convert.ToChar(br.ReadByte());                        
+
+                    //flags
+                     char flagdata = Convert.ToChar(br.ReadByte());
+
+                    //3 bytes for char* padding
+                     br.ReadByte();
+                     br.ReadByte();
+                     br.ReadByte();
+
+                    //int32
                     int MID = br.ReadInt32();
+
+                    //int32
                     int OptionBits = br.ReadInt32();
-                    int OptionVals = br.ReadInt32();
-                    char tag = br.ReadChar();
+
+                    //int[8]
+                    int[] OptionVals = new int[8];
+                    for (int i = 0; i < 8; i++)
+                        OptionVals[i] = br.ReadInt32();
+
+                    //char[8]
+                    char[] tag = new char[8];
+                    for (int i = 0; i < 8; i++)
+                         tag[i] = Convert.ToChar(br.ReadByte());
+
+                    //int32
                     int Behavior = br.ReadInt32();
+
+                    //uint32
                     uint ID = br.ReadUInt32();
+
                     br.Close();
                     //if(Int32.Parse(textBox3.Text) )
                     label6.Text = "Object Derserialized";
@@ -84,7 +172,13 @@ namespace WindowsFormsApp1
                     vecxz.Text = vec_z.ToString();
                     vecyz.Text = vec_y.ToString();
                     veczz.Text = vec_z.ToString();
-                    cdataz.Text = cdata.ToString();
+
+                    //char to string
+                    String cstr = new String(cdata);
+
+                    cdataz.Text = cstr;
+                    flagdataz.Text = flagdata.ToString();
+
                     MIDz.Text = MID.ToString();
                     OBitz.Text = OptionBits.ToString();
                     OptionValz.Text = OptionVals.ToString();
