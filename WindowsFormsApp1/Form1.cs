@@ -28,22 +28,68 @@ namespace WindowsFormsApp1
         
         private void button1_Click(object sender, EventArgs e)
         {
-            Data data = new Data
+            int offset = System.Runtime.InteropServices.Marshal.SizeOf(typeof(GenCapsule)); //get size of struct
+            index = Int32.Parse(numericUpDown1.Text);
+            int realindex = index * offset;
+            FileStream fout = new FileStream(@dir, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
+            BinaryWriter bw = new BinaryWriter(fout);
+            try
             {
-                fdata = float.Parse(fdataz.Text),
-                idata = Int32.Parse(idataz.Text)
-            };
-            itemz[index] = data;
-            BinaryFormatter bf = new BinaryFormatter();
-
-            FileStream fsout = new FileStream(dir, FileMode.Create, FileAccess.Write, FileShare.None);
-                try
-            {
-                using (fsout)
+                using (fout)
                 {
-                    bf.Serialize(fsout, itemz);
+                    bw.BaseStream.Seek(realindex, SeekOrigin.Begin);
+
                     label6.Text = "Object Serialized";
                     numericUpDown1.Enabled = true;
+                    //float[4]
+                    bw.Write(fdataz.Text.ToString());
+                    bw.Write(fdataz.Text.ToString());
+                    bw.Write(fdataz.Text.ToString());
+                    bw.Write(fdataz.Text.ToString());
+                    //int[4]
+                    bw.Write(idataz.Text.ToString());
+                    bw.Write(idataz.Text.ToString());
+                    bw.Write(idataz.Text.ToString());
+                    bw.Write(idataz.Text.ToString());
+                    //vec_t[4]
+                    bw.Write(vecxz.Text.ToString());
+                    bw.Write(vecyz.Text.ToString());
+                    bw.Write(veczz.Text.ToString());
+                    bw.Write(vecxz.Text.ToString());
+                    bw.Write(vecyz.Text.ToString());
+                    bw.Write(veczz.Text.ToString());
+                    bw.Write(vecxz.Text.ToString());
+                    bw.Write(vecyz.Text.ToString());
+                    bw.Write(veczz.Text.ToString());
+                    bw.Write(vecxz.Text.ToString());
+                    bw.Write(vecyz.Text.ToString());
+                    bw.Write(veczz.Text.ToString());
+                    //cdata[4][32]
+                    for (int i = 0; i < 128; i++) //4*32 = 128
+                        bw.Write(cdataz.Text.ToString());
+                    //flags
+                    bw.Write(flagdataz.Text.ToString());
+                    //3 bytes for char* padding
+                    byte[] bytes = new byte[] { 1 };
+                    bw.Write(bytes);
+                    bw.Write(bytes);
+                    bw.Write(bytes);
+                    //int32
+                    bw.Write(MIDz.ToString());
+                    //int32
+                    bw.Write(OBitz.ToString());
+                    //int[8]
+                    for (int i = 0; i < 8; i++)
+                        bw.Write(OptionValz.ToString());
+                    //char[8]
+                    for (int i = 0; i < 8; i++)
+                        bw.Write(tagz.ToString());
+                    //int32
+                    bw.Write(Behaviorz.ToString());
+                    //uint32
+                    bw.Write(IDz.ToString());
+
+                    bw.Close();
                 }
             }
             catch
@@ -72,23 +118,6 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e) //deserialize
         {
-            /*
-             * 
-             struct GenCapsule
-            {            
-            float fdata[4];
-            int idata[4];
-            vec_t vdata[4];
-            char cdata[4][32];
-            char flagdata;
-            int MID;
-            int OptionBits;
-            int OptionVals[8];
-            char tag[8];
-            int Behavior;
-            unsigned int ID;
-            };
-             */
             int offset = System.Runtime.InteropServices.Marshal.SizeOf(typeof(GenCapsule)); //get size of struct
 
             index = Int32.Parse(numericUpDown1.Text);
