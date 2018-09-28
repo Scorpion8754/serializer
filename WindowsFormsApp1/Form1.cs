@@ -42,54 +42,56 @@ namespace WindowsFormsApp1
                     label6.Text = "Object Serialized";
                     numericUpDown1.Enabled = true;
                     //float[4]
-                    bw.Write(fdataz.Text.ToString());
-                    bw.Write(fdataz.Text.ToString());
-                    bw.Write(fdataz.Text.ToString());
-                    bw.Write(fdataz.Text.ToString());
+                    bw.Write(float.Parse(fdataz.Text.ToString()));
+                    bw.Write(float.Parse(fdataz.Text.ToString()));
+                    bw.Write(float.Parse(fdataz.Text.ToString()));
+                    bw.Write(float.Parse(fdataz.Text.ToString()));
                     //int[4]
-                    bw.Write(idataz.Text.ToString());
-                    bw.Write(idataz.Text.ToString());
-                    bw.Write(idataz.Text.ToString());
-                    bw.Write(idataz.Text.ToString());
+                    bw.Write(Convert.ToInt32(idataz.Text.ToString()));
+                    bw.Write(Convert.ToInt32(idataz.Text.ToString()));
+                    bw.Write(Convert.ToInt32(idataz.Text.ToString()));
+                    bw.Write(Convert.ToInt32(idataz.Text.ToString()));
                     //vec_t[4]
-                    bw.Write(vecxz.Text.ToString());
-                    bw.Write(vecyz.Text.ToString());
-                    bw.Write(veczz.Text.ToString());
-                    bw.Write(vecxz.Text.ToString());
-                    bw.Write(vecyz.Text.ToString());
-                    bw.Write(veczz.Text.ToString());
-                    bw.Write(vecxz.Text.ToString());
-                    bw.Write(vecyz.Text.ToString());
-                    bw.Write(veczz.Text.ToString());
-                    bw.Write(vecxz.Text.ToString());
-                    bw.Write(vecyz.Text.ToString());
-                    bw.Write(veczz.Text.ToString());
+                    bw.Write(float.Parse(vecxz.Text.ToString()));
+                    bw.Write(float.Parse(vecyz.Text.ToString()));
+                    bw.Write(float.Parse(veczz.Text.ToString()));
+                    bw.Write(float.Parse(vecxz.Text.ToString()));
+                    bw.Write(float.Parse(vecyz.Text.ToString()));
+                    bw.Write(float.Parse(veczz.Text.ToString()));
+                    bw.Write(float.Parse(vecxz.Text.ToString()));
+                    bw.Write(float.Parse(vecyz.Text.ToString()));
+                    bw.Write(float.Parse(veczz.Text.ToString()));
+                    bw.Write(float.Parse(vecxz.Text.ToString()));
+                    bw.Write(float.Parse(vecyz.Text.ToString()));
+                    bw.Write(float.Parse(veczz.Text.ToString()));
                     //cdata[4][32]
                     for (int i = 0; i < 128; i++) //4*32 = 128
                         bw.Write(Convert.ToByte(cdataz.Text.ToString()[i]));
                     //flags
-                    bw.Write(Convert.ToByte(flagdataz.Text.ToString()));
+                    bw.Write(Convert.ToByte(cdataz.Text.ToString()[0]));
+                    
                     //3 bytes for char* padding
                     byte[] bytes = new byte[] { 1 };
                     bw.Write(bytes);
                     bw.Write(bytes);
                     bw.Write(bytes);
                     //int32
-                    bw.Write(MIDz.Text.ToString());
+                    bw.Write(Convert.ToInt32(MIDz.Text.ToString()));
                     //int32
-                    bw.Write(OBitz.Text.ToString());
+                    bw.Write(Convert.ToInt32(OBitz.Text.ToString()));
                     //int[8]
                     for (int i = 0; i < 8; i++)
-                        bw.Write(OptionValz.Text.ToString()[i]);
+                        bw.Write(Convert.ToInt32(OptionValz.Text.ToString()[i]));
                     //char[8]
                     for (int i = 0; i < 8; i++)
                         bw.Write(Convert.ToByte(tagz.Text.ToString()[i]));
                     //int32
-                    bw.Write(Behaviorz.Text.ToString());
+                    bw.Write(Convert.ToInt32(Behaviorz.Text.ToString()));
                     //uint32
-                    bw.Write(IDz.Text.ToString());
+                    bw.Write(Convert.ToUInt32(IDz.Text.ToString()));
 
                     bw.Close();
+                    
                 }
             }
             catch
