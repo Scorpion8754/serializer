@@ -65,8 +65,14 @@ namespace WindowsFormsApp1
                     bw.Write(float.Parse(vecyz.Text.ToString()));
                     bw.Write(float.Parse(veczz.Text.ToString()));
                     //cdata[4][32]
+                    string newcdata = cdataz.Text.ToString();
+                    for(int i = 0; i < 32 - newcdata.Length; i++)
+                    {
+                        newcdata = newcdata + "\0";
+                    }
+                    newcdata += newcdata += newcdata += newcdata;
                     for (int i = 0; i < 128; i++) //4*32 = 128
-                        bw.Write(Convert.ToByte(cdataz.Text.ToString()[i]));
+                        bw.Write(Convert.ToByte(newcdata[i]));
                     //flags
                     bw.Write(Convert.ToByte(cdataz.Text.ToString()[0]));
                     
@@ -80,11 +86,15 @@ namespace WindowsFormsApp1
                     //int32
                     bw.Write(Convert.ToInt32(OBitz.Text.ToString()));
                     //int[8]
+                    string NewInt = OptionValz.Text.ToString() + "\0";
+                    NewInt += NewInt += NewInt += NewInt;
                     for (int i = 0; i < 8; i++)
-                        bw.Write(Convert.ToInt32(OptionValz.Text.ToString()[i]));
+                        bw.Write(Convert.ToInt32(NewInt[i]));
                     //char[8]
+                    string NewTag = tagz.Text.ToString();
+                    NewTag += NewTag += NewTag += NewTag;
                     for (int i = 0; i < 8; i++)
-                        bw.Write(Convert.ToByte(tagz.Text.ToString()[i]));
+                        bw.Write(Convert.ToByte(NewTag[i]));
                     //int32
                     bw.Write(Convert.ToInt32(Behaviorz.Text.ToString()));
                     //uint32
@@ -94,7 +104,10 @@ namespace WindowsFormsApp1
                     
                 }
             }
-            catch (Exception ex)            {                MessageBox.Show("Exception: " + ex.ToString());                label6.Text = "Error";
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception: " + ex.ToString());
+                label6.Text = "Error";
 
             }
         }
