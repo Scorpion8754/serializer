@@ -94,15 +94,13 @@ namespace WindowsFormsApp1
                     
                 }
             }
-            catch
-            {
-                label6.Text = "Error";
-                
+            catch (Exception ex)            {                MessageBox.Show("Exception: " + ex.ToString());                label6.Text = "Error";
+
             }
         }
 
 
-            unsafe public struct GenCapsule
+        unsafe public struct GenCapsule
             {            
             fixed float fdata[4]; //4
             fixed int idata[4]; //4
@@ -276,6 +274,11 @@ namespace WindowsFormsApp1
                 label6.Text = "Error";
 
             }
+        }
+
+        private void SelectFileButton_Click(object sender, EventArgs e)
+        {
+            dir = SelectFile();
         }
     }
 }
