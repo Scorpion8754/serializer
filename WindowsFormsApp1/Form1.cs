@@ -66,28 +66,28 @@ namespace WindowsFormsApp1
                     bw.Write(veczz.Text.ToString());
                     //cdata[4][32]
                     for (int i = 0; i < 128; i++) //4*32 = 128
-                        bw.Write(cdataz.Text.ToString());
+                        bw.Write(Convert.ToByte(cdataz.Text.ToString()[i]));
                     //flags
-                    bw.Write(flagdataz.Text.ToString());
+                    bw.Write(Convert.ToByte(flagdataz.Text.ToString()));
                     //3 bytes for char* padding
                     byte[] bytes = new byte[] { 1 };
                     bw.Write(bytes);
                     bw.Write(bytes);
                     bw.Write(bytes);
                     //int32
-                    bw.Write(MIDz.ToString());
+                    bw.Write(MIDz.Text.ToString());
                     //int32
-                    bw.Write(OBitz.ToString());
+                    bw.Write(OBitz.Text.ToString());
                     //int[8]
                     for (int i = 0; i < 8; i++)
-                        bw.Write(OptionValz.ToString());
+                        bw.Write(OptionValz.Text.ToString()[i]);
                     //char[8]
                     for (int i = 0; i < 8; i++)
-                        bw.Write(tagz.ToString());
+                        bw.Write(Convert.ToByte(tagz.Text.ToString()[i]));
                     //int32
-                    bw.Write(Behaviorz.ToString());
+                    bw.Write(Behaviorz.Text.ToString());
                     //uint32
-                    bw.Write(IDz.ToString());
+                    bw.Write(IDz.Text.ToString());
 
                     bw.Close();
                 }
