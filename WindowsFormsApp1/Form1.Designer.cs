@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.fdataz = new System.Windows.Forms.TextBox();
             this.idataz = new System.Windows.Forms.TextBox();
             this.fdatalbl = new System.Windows.Forms.Label();
@@ -101,7 +102,7 @@
             this.serializeButton.TabIndex = 11;
             this.serializeButton.Text = "Serialize";
             this.serializeButton.UseVisualStyleBackColor = true;
-            this.serializeButton.Click += new System.EventHandler(this.button1_Click);
+            this.serializeButton.Click += new System.EventHandler(this.SerializeButton_Click);
             // 
             // deserializeButton
             // 
@@ -116,7 +117,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(107, 416);
+            this.label6.Location = new System.Drawing.Point(138, 371);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(0, 13);
             this.label6.TabIndex = 13;
@@ -124,7 +125,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(29, 412);
+            this.label3.Location = new System.Drawing.Point(29, 407);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 13);
             this.label3.TabIndex = 15;
@@ -132,7 +133,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(71, 410);
+            this.numericUpDown1.Location = new System.Drawing.Point(71, 405);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(36, 20);
             this.numericUpDown1.TabIndex = 17;
@@ -340,6 +341,7 @@
             this.Controls.Add(this.fdatalbl);
             this.Controls.Add(this.idataz);
             this.Controls.Add(this.fdataz);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Serializer";
             this.Load += new System.EventHandler(this.Form1_Load);

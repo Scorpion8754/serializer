@@ -1,0 +1,4 @@
+C:\Users\v-shmain\source\repos\serializer-method2\WindowsFormsApp1\obj\Release\WindowsFormsApp1.Form1.resources
+C:\Users\v-shmain\source\repos\serializer-method2\WindowsFormsApp1\obj\Release\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\v-shmain\source\repos\serializer-method2\WindowsFormsApp1\obj\Release\Serializer.csproj.GenerateResource.cache
+C:\Users\v-shmain\source\repos\serializer-method2\WindowsFormsApp1\obj\Release\Serializer.csproj.CoreCompileInputs.cache

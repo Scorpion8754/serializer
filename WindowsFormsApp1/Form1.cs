@@ -16,7 +16,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        public string dir = SelectFile();
+        public string dir;
         private int index;
         private List<Data> itemz = new List<Data>();
 
@@ -24,96 +24,29 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+            
         }
-        
-        private void button1_Click(object sender, EventArgs e)
+
+
+        private void SelectFileButton_Click(object sender, EventArgs e)
         {
-            int offset = System.Runtime.InteropServices.Marshal.SizeOf(typeof(GenCapsule)); //get size of struct
-            index = Int32.Parse(numericUpDown1.Text);
-            int realindex = index * offset;
-            FileStream fout = new FileStream(@dir, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
-            BinaryWriter bw = new BinaryWriter(fout);
-            try
-            {
-                using (fout)
-                {
-                    bw.BaseStream.Seek(realindex, SeekOrigin.Begin);
-
-                    label6.Text = "Object Serialized";
-                    numericUpDown1.Enabled = true;
-                    //float[4]
-                    bw.Write(float.Parse(fdataz.Text.ToString()));
-                    bw.Write(float.Parse(fdataz.Text.ToString()));
-                    bw.Write(float.Parse(fdataz.Text.ToString()));
-                    bw.Write(float.Parse(fdataz.Text.ToString()));
-                    //int[4]
-                    bw.Write(Convert.ToInt32(idataz.Text.ToString()));
-                    bw.Write(Convert.ToInt32(idataz.Text.ToString()));
-                    bw.Write(Convert.ToInt32(idataz.Text.ToString()));
-                    bw.Write(Convert.ToInt32(idataz.Text.ToString()));
-                    //vec_t[4]
-                    bw.Write(float.Parse(vecxz.Text.ToString()));
-                    bw.Write(float.Parse(vecyz.Text.ToString()));
-                    bw.Write(float.Parse(veczz.Text.ToString()));
-                    bw.Write(float.Parse(vecxz.Text.ToString()));
-                    bw.Write(float.Parse(vecyz.Text.ToString()));
-                    bw.Write(float.Parse(veczz.Text.ToString()));
-                    bw.Write(float.Parse(vecxz.Text.ToString()));
-                    bw.Write(float.Parse(vecyz.Text.ToString()));
-                    bw.Write(float.Parse(veczz.Text.ToString()));
-                    bw.Write(float.Parse(vecxz.Text.ToString()));
-                    bw.Write(float.Parse(vecyz.Text.ToString()));
-                    bw.Write(float.Parse(veczz.Text.ToString()));
-                    //cdata[4][32]
-                    string newcdata = cdataz.Text.ToString();
-                    for(int i = 0; i < 32 - newcdata.Length; i++)
-                    {
-                        newcdata = newcdata + "\0";
-                    }
-                    newcdata += newcdata += newcdata += newcdata;
-                    for (int i = 0; i < 128; i++) //4*32 = 128
-                        bw.Write(Convert.ToByte(newcdata[i]));
-                    //flags
-                    bw.Write(Convert.ToByte(cdataz.Text.ToString()[0]));
-                    
-                    //3 bytes for char* padding
-                    byte[] bytes = new byte[] { 1 };
-                    bw.Write(bytes);
-                    bw.Write(bytes);
-                    bw.Write(bytes);
-                    //int32
-                    bw.Write(Convert.ToInt32(MIDz.Text.ToString()));
-                    //int32
-                    bw.Write(Convert.ToInt32(OBitz.Text.ToString()));
-                    //int[8]
-                    string NewInt = OptionValz.Text.ToString() + "\0";
-                    NewInt += NewInt += NewInt += NewInt;
-                    for (int i = 0; i < 8; i++)
-                        bw.Write(Convert.ToInt32(NewInt[i]));
-                    //char[8]
-                    string NewTag = tagz.Text.ToString();
-                    NewTag += NewTag += NewTag += NewTag;
-                    for (int i = 0; i < 8; i++)
-                        bw.Write(Convert.ToByte(NewTag[i]));
-                    //int32
-                    bw.Write(Convert.ToInt32(Behaviorz.Text.ToString()));
-                    //uint32
-                    bw.Write(Convert.ToUInt32(IDz.Text.ToString()));
-
-                    bw.Close();
-                    
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Exception: " + ex.ToString());
-                label6.Text = "Error";
-
-            }
+            dir = SelectFile();
         }
 
 
-        unsafe public struct GenCapsule
+        private void SerializeButton_Click(object sender, EventArgs e)
+        {
+            Serialize(index);
+        }
+
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            Serialize(index + 1);
+        }
+
+
+        unsafe private struct GenCapsule
             {            
             fixed float fdata[4]; //4
             fixed int idata[4]; //4
@@ -235,23 +168,17 @@ namespace WindowsFormsApp1
                 label6.Text = "ERROR";
             }
         }
-
-        private static string SelectFile()
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                return (ofd.FileName);
-                
-            else
-            {
-                return "null";
-            }
-            
-        }
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            label6.Text = dir;
+            this.TopMost = true;
+
+            while (dir == null)
+            {
+                dir = SelectFile();
+            }
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -289,9 +216,146 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void SelectFileButton_Click(object sender, EventArgs e)
+
+        public string SelectFile()
         {
-            dir = SelectFile();
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                numericUpDown1.Enabled = true;
+                return (ofd.FileName);
+                
+            }
+            else
+            {
+                return dir;
+            }
+
         }
+
+        private void Serialize(int InputIndex)
+        {
+            int offset = System.Runtime.InteropServices.Marshal.SizeOf(typeof(GenCapsule)); //get size of struct
+            index = Int32.Parse(numericUpDown1.Text);
+            int realindex = InputIndex * offset;
+            FileStream fout = new FileStream(@dir, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
+            BinaryWriter bw = new BinaryWriter(fout);
+            try
+            {
+                using (fout)
+                {
+                    bw.BaseStream.Seek(realindex, SeekOrigin.Begin);
+
+                    label6.Text = "Object Serialized";
+                    numericUpDown1.Enabled = true;
+                    //float[4]
+                    Writer(float.Parse(fdataz.Text.ToString()), 4);
+
+                    //int[4]
+                    Writer(Convert.ToInt32(idataz.Text.ToString()), 4);
+
+                    //vec_t[4]
+                    bw.Write(float.Parse(vecxz.Text.ToString()));
+                    bw.Write(float.Parse(vecyz.Text.ToString()));
+                    bw.Write(float.Parse(veczz.Text.ToString()));
+                    bw.Write(float.Parse(vecxz.Text.ToString()));
+                    bw.Write(float.Parse(vecyz.Text.ToString()));
+                    bw.Write(float.Parse(veczz.Text.ToString()));
+                    bw.Write(float.Parse(vecxz.Text.ToString()));
+                    bw.Write(float.Parse(vecyz.Text.ToString()));
+                    bw.Write(float.Parse(veczz.Text.ToString()));
+                    bw.Write(float.Parse(vecxz.Text.ToString()));
+                    bw.Write(float.Parse(vecyz.Text.ToString()));
+                    bw.Write(float.Parse(veczz.Text.ToString()));
+                    string[] newcdata = new string[4];
+                    newcdata[0] = cdataz.Text.ToString();
+                    newcdata[1] = cdataz.Text.ToString();
+                    newcdata[2] = cdataz.Text.ToString();
+                    newcdata[3] = cdataz.Text.ToString();
+
+                    char[] buffer = concbuffer(newcdata, 4, 32);
+
+                    for (int i = 0; i < 128; i++) //4*32 = 128
+                        bw.Write(Convert.ToByte(buffer[i]));
+
+                    //flags
+                    bw.Write(Convert.ToByte(flagdataz.Text.ToString()[0]));
+
+
+                    //3 bytes for char* padding
+                    byte[] bytes = new byte[] { 1 };
+                    Writer(bytes, 3);
+
+                    //int32
+                    bw.Write(Convert.ToInt32(MIDz.Text.ToString()));
+
+
+                    //int32
+                    bw.Write(Convert.ToInt32(OBitz.Text.ToString()));
+
+
+                    //int[8]
+                    string NewInt = OptionValz.Text.ToString() + "\0";
+                    NewInt += NewInt += NewInt += NewInt;
+                    for (int i = 0; i < 8; i++)
+                        bw.Write(Convert.ToInt32(NewInt[i]));
+
+
+                    //char[8]
+                    string NewTag = tagz.Text.ToString();
+                    NewTag += NewTag += NewTag += NewTag;
+                    for (int i = 0; i < 8; i++)
+                        bw.Write(Convert.ToByte(NewTag[i]));
+
+
+                    //int32
+                    bw.Write(Convert.ToInt32(Behaviorz.Text.ToString()));
+
+
+                    //uint32
+                    bw.Write(Convert.ToUInt32(IDz.Text.ToString()));
+
+
+                    bw.Close();
+
+
+                    void Writer(dynamic input, int repetitions)
+                    {
+                        for (int i = 0; i < repetitions; i++)
+                        {
+                            bw.Write(input);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception: " + ex.ToString());
+                label6.Text = "Error";
+
+            }
+        }
+
+        private char[] concbuffer(string[] sarray, int count, int fill)
+        {
+            char[] buffer = new char[count * fill];
+
+            for (int j = 0; j < count; j++)
+            {
+                for (int i = 0; i < fill; i++)
+                {
+                    string next = sarray[j];
+
+                    if (i < sarray[j].Length && i - 1 != fill)
+                        buffer[j * fill + i] = next[i];
+
+                    else buffer[i] = '\0';
+                }
+            }
+
+            return buffer;
+        }
+
+        
     }
 }

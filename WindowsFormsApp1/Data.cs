@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    public struct vec_t {
+    public struct vec_t
+    {
         public float x;
         public float y;
         public float z;
@@ -14,7 +15,7 @@ namespace WindowsFormsApp1
     [Serializable]
     public struct Data
     {
-        public float fdata;    
+        public float fdata;
         public int idata;
         public vec_t vdata;
         public char cdata;
